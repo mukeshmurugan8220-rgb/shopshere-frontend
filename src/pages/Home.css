@@ -1,0 +1,438 @@
+
+/* Welcome Text */
+.welcome-text {
+  display: inline-block;
+  color: #ffffff;
+  animation: welcomePulse 2.5s ease-in-out infinite;
+}
+
+/* ShopSphere - Neon Pink, Electric Blue & Cyan */
+.shopsphere-title {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    90deg,
+    #ff2bd6,
+    #8b5cf6,
+    #00eaff,
+    #ff2bd6
+  );
+
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    cyberGradient 5s linear infinite,
+    cyberFloat 3s ease-in-out infinite;
+
+  filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.65));
+}
+
+/* Shopping Cart */
+.welcome-cart {
+  display: inline-block;
+  animation: cyberCart 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px #ff2bd6);
+}
+
+/* Welcome Glow */
+@keyframes welcomePulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+
+  50% {
+    text-shadow: 0 0 18px rgba(0, 234, 255, 0.8);
+  }
+}
+
+/* Animated Gradient */
+@keyframes cyberGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Floating Text */
+@keyframes cyberFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Cart Bounce */
+@keyframes cyberCart {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(-10deg);
+  }
+}
+
+/* Explore Button */
+.hero-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 15px rgba(255, 43, 214, 0.6),
+    0 0 28px rgba(0, 234, 255, 0.35);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-text,
+  .shopsphere-title,
+  .welcome-cart {
+    animation: none;
+  }
+}
+
+/* ===== FUTURISTIC SHOPSPHERE TITLE ===== */
+
+.home .hero .hero-content h1 .welcome-text {
+  display: inline-block;
+  color: #d5faff;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 8px rgba(0, 240, 255, 0.6),
+    0 0 24px rgba(0, 240, 255, 0.2);
+}
+
+/* Cyber-Tech Brand Text */
+.home .hero .hero-content h1 .shopsphere-title {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  font-weight: 950;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    110deg,
+    #00f5ff 0%,
+    #ffffff 18%,
+    #8b5cf6 38%,
+    #00f5ff 58%,
+    #00ffb3 78%,
+    #00f5ff 100%
+  );
+
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(0 0 5px rgba(0, 245, 255, 0.8))
+    drop-shadow(0 0 18px rgba(139, 92, 246, 0.45));
+
+  animation:
+    futureColorFlow 6s linear infinite,
+    futureHover 4s ease-in-out infinite;
+}
+
+/* Moving Digital Light Sweep */
+.home .hero .hero-content h1 .shopsphere-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.8) 48%,
+    transparent 65%
+  );
+
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  background-position: -200% 0;
+
+  animation: futureScan 4s ease-in-out infinite;
+
+  -webkit-mask-image: linear-gradient(#000, #000);
+  mask-image: linear-gradient(#000, #000);
+}
+
+/* Futuristic Shopping Cart */
+.home .hero .hero-content h1 .welcome-cart {
+  display: inline-block;
+  filter:
+    drop-shadow(0 0 5px #00f5ff)
+    drop-shadow(0 0 14px rgba(0, 245, 255, 0.6));
+
+  animation: futureCart 2.4s ease-in-out infinite;
+}
+
+/* Digital Gradient Flow */
+@keyframes futureColorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Gentle Floating Motion */
+@keyframes futureHover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Light Scanning Effect */
+@keyframes futureScan {
+  0%, 15% {
+    background-position: -200% 0;
+  }
+
+  65%, 100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Cart Motion */
+@keyframes futureCart {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-8deg);
+  }
+}
+
+/* Neon Explore Button */
+.home .hero .hero-btn {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #00f5ff;
+  box-shadow:
+    0 0 10px rgba(0, 245, 255, 0.22),
+    inset 0 0 10px rgba(0, 245, 255, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home .hero .hero-btn:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 15px rgba(0, 245, 255, 0.6),
+    0 0 35px rgba(139, 92, 246, 0.35);
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .home .hero .hero-content h1 .welcome-text,
+  .home .hero .hero-content h1 .shopsphere-title,
+  .home .hero .hero-content h1 .shopsphere-title::after,
+  .home .hero .hero-content h1 .welcome-cart {
+    animation: none;
+  }
+}
+
+/* CLEAR FUTURISTIC SHOPSPHERE HEADING */
+
+.home .hero .hero-content h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -1px;
+}
+
+/* Welcome to — Clear Dark Text */
+.home .hero .hero-content h1 .welcome-text {
+  color: #18213b !important;
+  -webkit-text-fill-color: #18213b !important;
+  text-shadow: none !important;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* ShopSphere — Strong Neon Gradient */
+.home .hero .hero-content h1 .shopsphere-title {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #5425d8 0%,
+    #075eea 35%,
+    #00a6a6 65%,
+    #5425d8 100%
+  ) !important;
+
+  background-size: 250% 100% !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  filter: drop-shadow(0 2px 1px rgba(40, 40, 100, 0.15)) !important;
+
+  animation:
+    clearDigitalFlow 5s linear infinite,
+    clearTitleFloat 4s ease-in-out infinite !important;
+}
+
+/* Shopping Cart */
+.home .hero .hero-content h1 .welcome-cart {
+  filter: none !important;
+  animation: clearCartMotion 3s ease-in-out infinite !important;
+}
+
+/* Smooth Digital Colour Movement */
+@keyframes clearDigitalFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 250% 50%;
+  }
+}
+
+/* Subtle Floating */
+@keyframes clearTitleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Cart Animation */
+@keyframes clearCartMotion {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-5deg);
+  }
+}
+
+/* Mobile Readability */
+@media (max-width: 600px) {
+  .home .hero .hero-content h1 {
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+  }
+}
+
+/* ===== FUTURISTIC NAVBAR BRAND ===== */
+
+.navbar .shopsphere-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* ShopSphere Gradient Text */
+.navbar .shopsphere-logo .logo-text {
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #00f5ff 25%,
+    #c084fc 55%,
+    #ffffff 75%,
+    #00f5ff 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: navbarBrandFlow 6s linear infinite;
+
+  filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.35));
+}
+
+/* Animated Shopping Cart */
+.navbar .shopsphere-logo .logo-icon {
+  display: inline-block;
+  font-size: 1.7rem;
+  animation: navbarCartFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
+}
+
+/* Hover Effect */
+.navbar .shopsphere-logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+}
+
+/* Digital Gradient Motion */
+@keyframes navbarBrandFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 250% 50%;
+  }
+}
+
+/* Smooth Cart Motion */
+@keyframes navbarCartFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-3px) rotate(-5deg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .navbar .shopsphere-logo {
+    font-size: 1.35rem;
+    gap: 5px;
+  }
+
+  .navbar .shopsphere-logo .logo-icon {
+    font-size: 1.3rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .navbar .shopsphere-logo .logo-text,
+  .navbar .shopsphere-logo .logo-icon {
+    animation: none;
+  }
+}
+
+
+

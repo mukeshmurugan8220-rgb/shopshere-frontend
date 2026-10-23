@@ -1,71 +1,132 @@
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 const BASE_URL = "https://shopsphere-backend-2-53ck.onrender.com";
+const WISHLIST_KEY = "shopsphereWishlist";
 
 function ProductCard({ product }) {
-
   const { addToCart } = useCart();
 
+  const [isWishlisted, setIsWishlisted] = useState(() => {
+    try {
+      const wishlist = JSON.parse(
+        localStorage.getItem(WISHLIST_KEY) || "[]"
+      );
+
+      return wishlist.some((item) => item._id === product._id);
+    } catch {
+      return false;
+    }
+  });
+
   const getImageUrl = () => {
-
     if (!product.image) {
-      return "https://via.placeholder.com/300x300?text=No+Image";
+      return "https://placehold.co/300x300?text=No+Image";
     }
 
-    // Old Windows Path
     if (product.image.includes("\\")) {
-      return `${BASE_URL}/uploads/products/${product.image.split("\\").pop()}`;
+      const filename = product.image.split("\\").pop();
+      return `${BASE_URL}/uploads/products/${filename}`;
     }
 
-    // Render Uploads
     if (product.image.startsWith("/uploads")) {
       return `${BASE_URL}${product.image}`;
     }
 
-    // Already Full URL
     return product.image;
+  };
 
+  const toggleWishlist = () => {
+    try {
+      const wishlist = JSON.parse(
+        localStorage.getItem(WISHLIST_KEY) || "[]"
+      );
+
+      const alreadyExists = wishlist.some(
+        (item) => item._id === product._id
+      );
+
+      const updatedWishlist = alreadyExists
+        ? wishlist.filter((item) => item._id !== product._id)
+        : [...wishlist, product];
+
+      localStorage.setItem(
+        WISHLIST_KEY,
+        JSON.stringify(updatedWishlist)
+      );
+
+      setIsWishlisted(!alreadyExists);
+
+      // Update Navbar wishlist count immediately
+      window.dispatchEvent(new Event("wishlistUpdated"));
+    } catch (error) {
+      console.error("Wishlist update failed:", error);
+      alert("Wishlist update panna mudiyala. Please try again.");
+    }
   };
 
   return (
-
     <div className="product-card">
-
       <div className="image-box">
-
         <img
           src={getImageUrl()}
-          alt={product.name}
+          alt={product.name || "Product"}
           loading="lazy"
-          onError={(e) => {
-            console.log("Image Error:", e.target.src);
-            e.target.src = "https://via.placeholder.com/300x300?text=No+Image";
+          onError={(event) => {
+            event.currentTarget.onerror = null;
+            event.currentTarget.src =
+              "https://placehold.co/300x300?text=No+Image";
           }}
         />
 
+        <button
+          type="button"
+          className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
+          onClick={toggleWishlist}
+          aria-label={
+            isWishlisted
+              ? "Remove from wishlist"
+              : "Add to wishlist"
+          }
+          title={
+            isWishlisted
+              ? "Remove from wishlist"
+              : "Add to wishlist"
+          }
+        >
+          {isWishlisted ? "❤️" : "🤍"}
+        </button>
       </div>
 
       <h2>{product.name}</h2>
 
-      <p>{product.description}</p>
+      <p>{product.description || "Discover this amazing gadget."}</p>
 
-      <h3>₹ {product.price}</h3>
+      <h3>
+        ₹ {Number(product.price || 0).toLocaleString("en-IN")}
+      </h3>
 
-      <button onClick={() => addToCart(product)}>
+      <button
+        type="button"
+        className="add-cart-btn"
+        onClick={() => addToCart(product)}
+      >
         Add To Cart 🛒
       </button>
 
-      <Link to={`/product/${product._id}`}>
-        <button className="view-btn">
+      <Link
+        to={`/product/${product._id}`}
+        className="view-product-link"
+      >
+        <button type="button" className="view-btn">
           View Product 👀
         </button>
       </Link>
-
     </div>
-
   );
-
 }
 
 export default ProductCard;
+

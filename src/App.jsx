@@ -20,6 +20,7 @@ import CardPayment from "./pages/CardPayment";
 import COD from "./pages/COD";
 import Otp from "./pages/Otp";
 import Payment from "./pages/Payment";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
 
@@ -98,6 +99,11 @@ function App() {
         <Route
           path="/payment"
           element={<Payment />}
+         />
+         
+         <Route
+            path="/wishlist"
+            element={<Wishlist />}
          />
 
       </Routes>
